@@ -1,0 +1,41 @@
+<div class="container">
+    <form (ngSubmit)="addOrUpdate()" [formGroup]="listForm">
+      <div class="preview-box">
+        <img [src]="listForm.get('img')?.value" alt="Preview" />
+      </div>
+      <div class="content">
+        <div>
+          <div>Nhập ID</div>
+          <input type="text" placeholder="ID" formControlName="id" [disabled]="isEdit" />
+        </div>
+        <div>
+          <div>Nhập img URL</div>
+          <input type="text" placeholder="img" formControlName="img" />
+        </div>
+        <div>
+          <div>Nhập color</div>
+          <input type="text" placeholder="color" formControlName="color" />
+        </div>
+        <div>
+          <div>Nhập price</div>
+          <input type="text" placeholder="price" formControlName="price" />
+        </div>
+        <div>
+          <div>Nhập saleOff</div>
+          <input type="text" placeholder="saleOff" formControlName="saleOff" />
+        </div>
+        <div>
+          <div>Nhập name</div>
+          <input type="text" placeholder="name" formControlName="name" />
+        </div>
+        <div>
+          <div>Nhập description</div>
+          <input type="text" placeholder="description" formControlName="description" />
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="submit">{{ isEdit ? 'Update' : 'Save' }}</button>
+        <button type="button" (click)="closeDialog()">Close</button>
+      </div>
+    </form>
+  </div>
