@@ -1,6 +1,13 @@
 <div class="container">
-  <button (click)="openDialog()" class="add-button">ADD PIANO</button>
-  
+  <div class="header">
+    <h1 class="title">Piano Store</h1>
+    <div class="component">
+      <button class="home">Home</button>
+      <button class="about">About Us</button>
+      <button class="cart"><mat-icon>add_shopping_cart</mat-icon></button>
+    </div>
+    <!-- <button (click)="openDialog()" class="add-button">ADD PIANO</button> -->
+  </div>
   <div class="main">
     <div class="card-group">
       <div class="card" *ngFor="let piano of data">
