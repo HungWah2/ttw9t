@@ -13,13 +13,24 @@ import { LoginComponent } from './login/login.component';
 export class AppComponent implements OnInit {
   title = 'hd-semniar';
   data: Data[] = [];
-showEditDeleteButtons: any;
+  showEditDeleteButtons: any;
+  ShowLogoutButton: any;
 
-  constructor(private apiService: ApiService, public dialog: MatDialog) {}
+  constructor(private apiService: ApiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.get();
-    this.openLoginDialog();
+    // Check for stored credentials
+    const storedUserId = localStorage.getItem('userId');
+    const storedPassword = localStorage.getItem('password');
+
+    if (storedUserId && storedPassword) {
+      // Set the initial state based on stored credentials
+      this.checkCredentials(storedUserId, storedPassword);
+    } else {
+      // If no stored credentials, open the login dialog
+      this.openLoginDialog();
+    }
   }
 
   openDialog() {
@@ -65,21 +76,36 @@ showEditDeleteButtons: any;
 
     dialogRef.afterClosed().subscribe((result) => {
       // Check user credentials and show/hide buttons accordingly
-      let showEditDeleteButtons: boolean = false;
-
-      if (result && result.userId === '1' && result.password === 'admin') {
-        // User with ID 1 and password 'admin'
-        // Show edit and delete buttons
-        showEditDeleteButtons = true;
-      } else if (result && result.userId === '2' && result.password === 'guest') {
-        // User with ID 2 and password 'guest'
-        // Hide edit and delete buttons
-        showEditDeleteButtons = false;
+      if (result && result.userId && result.password) {
+        this.checkCredentials(result.userId, result.password);
+        // Store credentials in localStorage after successful login
+        localStorage.setItem('userId', result.userId);
+        localStorage.setItem('password', result.password);
       } else {
-        // Invalid credentials or canceled login
-        // You may handle this case as needed
-        showEditDeleteButtons = false;
+        // Handle the case where the login dialog is closed without entering credentials
+        this.showEditDeleteButtons = false;
       }
     });
+  }
+
+  private checkCredentials(userId: string, password: string): void {
+    // Check user credentials and show/hide buttons accordingly
+    if (userId === '1' && password === 'admin') {
+      this.showEditDeleteButtons = true;
+      this.ShowLogoutButton = true;
+    } else if (userId === '2' && password === 'guest') {
+      this.showEditDeleteButtons = false;
+      this.ShowLogoutButton = true;
+    } else {
+      this.showEditDeleteButtons = false;
+    }
+  }
+
+  logout(): void {
+    // Clear stored credentials when logging out
+    localStorage.removeItem('userId');
+    localStorage.removeItem('password');
+    this.showEditDeleteButtons = false;
+    this.openLoginDialog();
   }
 }

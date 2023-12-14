@@ -2,11 +2,12 @@
   <div class="header">
     <h1 class="title">Piano Store</h1>
     <div class="component">
+      <button *ngIf="ShowLogoutButton" (click)="logout()" class="logout-button">Logout</button>
       <button class="home">Home</button>
       <button class="about">About Us</button>
       <button class="cart"><mat-icon>add_shopping_cart</mat-icon></button>
     </div>
-    <!-- <button (click)="openDialog()" class="add-button">ADD PIANO</button> -->
+    <button (click)="openDialog()" class="add-button" *ngIf="showEditDeleteButtons">ADD PIANO</button>
   </div>
   <div class="main">
     <div class="card-group">
@@ -23,12 +24,12 @@
             <div class="color">{{piano.color}}</div>
           </div>
           <div class="button-group" *ngIf="showEditDeleteButtons">
-            <button (click)="openEditDialog(piano.id)" class="edit-button" >Edit</button>
-            <button (click)="delete(piano.id)" class="delete-button" >Delete</button>
+            <button (click)="openEditDialog(piano.id)" class="edit-button">Edit</button>
+            <button (click)="delete(piano.id)" class="delete-button">Delete</button>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
