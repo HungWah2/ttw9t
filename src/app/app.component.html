@@ -22,9 +22,9 @@
             <div class="description">{{piano.description}}</div>
             <div class="color">{{piano.color}}</div>
           </div>
-          <div class="button-group">
-            <button (click)="openEditDialog(piano.id)" class="edit-button">Edit</button>
-            <button (click)="delete(piano.id)" class="delete-button">Delete</button>
+          <div class="button-group" *ngIf="showEditDeleteButtons">
+            <button (click)="openEditDialog(piano.id)" class="edit-button" >Edit</button>
+            <button (click)="delete(piano.id)" class="delete-button" >Delete</button>
           </div>
         </div>
       </div>

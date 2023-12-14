@@ -3,6 +3,7 @@ import { Data } from 'src/app/model/data.model';
 import { ApiService } from './service/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,13 @@ import { DialogComponent } from 'src/app/dialog/dialog.component';
 export class AppComponent implements OnInit {
   title = 'hd-semniar';
   data: Data[] = [];
+showEditDeleteButtons: any;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) {}
+  constructor(private apiService: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.get();
+    this.openLoginDialog();
   }
 
   openDialog() {
@@ -52,6 +55,31 @@ export class AppComponent implements OnInit {
     this.apiService.delete(id).then((res) => {
       console.log(res);
       this.get();
+    });
+  }
+
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Check user credentials and show/hide buttons accordingly
+      let showEditDeleteButtons: boolean = false;
+
+      if (result && result.userId === '1' && result.password === 'admin') {
+        // User with ID 1 and password 'admin'
+        // Show edit and delete buttons
+        showEditDeleteButtons = true;
+      } else if (result && result.userId === '2' && result.password === 'guest') {
+        // User with ID 2 and password 'guest'
+        // Hide edit and delete buttons
+        showEditDeleteButtons = false;
+      } else {
+        // Invalid credentials or canceled login
+        // You may handle this case as needed
+        showEditDeleteButtons = false;
+      }
     });
   }
 }
