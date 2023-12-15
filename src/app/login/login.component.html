@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Please Login</h2>
+<div mat-dialog-content class="login_container">
+  <p>Please enter your credentials:</p>
+  <label for="userId" class="id">ID:</label>
+  <input id="userId" type="text" [(ngModel)]="userId" />
+  <br />
+  <label for="password">Password:</label>
+  <input id="password" type="password" [(ngModel)]="password" />
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="{ userId: userId, password: password }">Login</button>
+</div>
