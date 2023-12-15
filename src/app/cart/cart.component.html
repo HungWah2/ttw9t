@@ -1,0 +1,46 @@
+<div class="container">
+    <h1>Xác nhận đơn hàng</h1>
+    <div class="shopping-cart">
+      <div class="column-labels">
+        <label class="product-image">Hình ảnh</label>
+        <label class="product-details">Sản phẩm</label>
+        <label class="product-price">Giá</label>
+        <label class="product-quantity">Số lượng</label>
+        <label class="product-removal">Xóa</label>
+        <label class="product-line-price">Tổng tiền</label>
+      </div>
+  
+      <div class="product" *ngFor="let item of itemList$">
+        <div class="product-image">
+          <img src="{{item.img}}" />
+        </div>
+        <div class="product-details">
+          <div class="product-title">{{item.name}}</div>
+          <p class="product-description"> {{item.description}}
+          </p>
+        </div>
+        <div class="product-price">{{item.price}}</div>
+        <!-- <div class="product-quantity">
+          <div></div>
+        </div> -->
+        <div class="product-removal">
+          <button  class="remove-product">Xóa</button>
+          <button class="remove-product">Thêm</button>
+        </div>
+        <div class="product-line-price"></div>
+      </div>
+  
+      <div class="totals">
+        <div class="totals-item">
+          <label>Thành tiền</label>
+          <div class="totals-value" id="cart-subtotal"></div>
+        </div>
+      </div>
+  
+  
+      <button class="checkout">Xóa tất cả</button>
+    </div>
+  </div>
+  
+
+  

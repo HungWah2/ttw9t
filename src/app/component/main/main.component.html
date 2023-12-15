@@ -1,0 +1,28 @@
+<div class="container">
+    
+    <div class="main">
+      <div class="card-group">
+        <div class="card" *ngFor="let piano of data">
+          <div class="card-image">
+            <img src="{{piano.img}}" alt="Piano Image">
+          </div>
+          <div class="card-info">
+            <div class="slide-info">
+              <h2>{{piano.name}}</h2>
+              <div class="price" [class.sale]="piano.saleOff">{{piano.price}}</div>
+              <div class="sale-off" *ngIf="piano.saleOff">{{piano.saleOff}}</div>
+              <div class="description">{{piano.description}}</div>
+              <div class="color">{{piano.color}}</div>
+            </div>
+            <div class="button-group">
+              <!-- <button (click)="openEditDialog(piano.id)" class="edit-button">Edit</button>
+              <button (click)="delete(piano.id)" class="delete-button">Delete</button> -->
+              <button class="edit-button" (click)="addToCart(piano)" >Buy</button>
+              <!-- <button class="delete-button">Delete</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
