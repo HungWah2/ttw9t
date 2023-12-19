@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="main">
+    <div class="card-group">
+      <div class="card" *ngFor="let piano of data | filter:searchKey:'name'">
+        <div class="card-image">
+          <img src="{{ piano.img }}" alt="Piano Image" />
+        </div>
+        <div class="card-info">
+          <div class="slide-info">
+            <h2>{{ piano.name }}</h2>
+            <div class="price" [class.sale]="piano.saleOff">
+              {{ piano.price }}
+            </div>
+            <div class="sale-off" *ngIf="piano.saleOff">
+              {{ piano.saleOff }}
+            </div>
+            <div class="description">{{ piano.description }}</div>
+            <div class="color">{{ piano.color }}</div>
+          </div>
+          <div class="description">
+            <div>Quantity: {{piano.quantity}}</div>
+          </div>
+          <div class="button-group">
+            <button (click)="addToCart(piano)" class="edit-button">
+              Add cart
+            </button>
+            <button class="buy-button">
+              Buy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

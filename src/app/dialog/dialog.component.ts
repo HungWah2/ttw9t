@@ -26,7 +26,9 @@ export class DialogComponent implements OnInit {
       price: [''],
       saleOff: [''],
       name: [''],
-      description: ['']
+      description: [''],
+      quantity: [''],
+      stock: 0,
     });
 
     if (data) {
@@ -38,7 +40,9 @@ export class DialogComponent implements OnInit {
         price: data.price || '',
         saleOff: data.saleOff || '',
         name: data.name || '',
-        description: data.description || ''
+        description: data.description || '',
+        quantity: data.quantity || '',
+        stock: data.stock || '',
       });
     }
   }
@@ -57,9 +61,12 @@ export class DialogComponent implements OnInit {
         if (this.isEdit) {
           await this.apiService.put(formValue);
           console.log('updated');
+          await this.apiService.get();
+
         } else {
           await this.apiService.post(formValue);
           console.log('added');
+          await this.apiService.get();
         }
         this.dialogRef.close();
       } catch (error) {
