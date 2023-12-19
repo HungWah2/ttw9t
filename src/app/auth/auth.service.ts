@@ -20,6 +20,25 @@ export class AuthService {
     {
       this.session = {username: 'user'};
       this.router.navigate(['/user']);
+    } else if(username.length == 0 && password.length == 0)
+    {
+      alert('Please enter username and password');
+
+    } else if(username.length == 0)
+    {
+      alert('Please enter username');
+
+    } else if(password.length == 0)
+    {
+      alert('Please enter password');
+
+    }
+    else if(username.length > 15 || password.length > 15)
+    {
+      alert('Username and password must be less than 15 characters');
+    } else
+    {
+      alert('Invalid username or password');
     }
   }
 
