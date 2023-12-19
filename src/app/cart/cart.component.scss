@@ -1,264 +1,55 @@
-body {
-    width: 100vw;
-    height: 100vh;
+.card {
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
 }
-
 .container {
-  padding-top: 50px;
   height: 70%;
+
+}
+.center img {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  height: 162px;
+  width: 250px;
+  margin: 20px 0px;
 }
 
-$color-border: #eee;
-$color-label: #aaa;
-$font-default: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-  Helvetica, Arial, sans-serif;
-$font-bold: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-
-/* Global "table" column settings */
-.product-image {
-  float: left;
-  width: 20%;
-}
-.product-details {
-  float: left;
-  width: 37%;
-}
-.product-price {
-  float: left;
-  width: 12%;
-}
-.product-quantity {
-  float: left;
-  width: 10%;
-}
-.product-removal {
-  float: left;
-  width: 9%;
-}
-.product-line-price {
-  float: left;
-  width: 12%;
-  text-align: right;
+h4,
+h6 {
+  font-weight: 600;
 }
 
-/* This is used as the traditional .clearfix class */
-.group:before,
-.group:after {
-  content: "";
-  display: table;
-}
-.group:after {
-  clear: both;
-}
-.group {
-  zoom: 1;
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-/* Apply clearfix in a few places */
-.shopping-cart,
-.column-labels,
-.product,
-.totals-item {
-  @extend .group;
+.card-table {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: .25rem;
 }
 
-/* Apply dollar signs */
-.product .product-price:before,
-.product .product-line-price:before,
-.totals-value:before {
-  content: "$";
+.center .btn {
+  font-size: 14px !important;
+  margin-top: 20px !important;
+  font-weight: 400;
+  padding: 12px 72px;
+  border-radius: 3px !important;
 }
 
-/* Body/Header stuff */
-body {
-  padding: 0px 30px 30px 20px;
-  font-family: $font-default;
-  font-weight: 100;
+button {
+  cursor: pointer;
 }
-
-h1 {
-  font-weight: 100;
-}
-
-label {
-  color: $color-label;
-}
-
-.shopping-cart {
-  margin-top: -45px;
-}
-
-/* Column headers */
-.column-labels {
-  label {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid $color-border;
-  }
-
-  .product-image,
-  .product-details,
-  .product-removal {
-    text-indent: -9999px;
-  }
-}
-
-/* Product entries */
-.product {
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid $color-border;
-
-  .product-image {
-    text-align: center;
-    img {
-      width: 100px;
-    }
-  }
-
-  .product-details {
-    .product-title {
-      margin-right: 20px;
-      font-family: $font-bold;
-    }
-    .product-description {
-      margin: 5px 20px 5px 0;
-      line-height: 1.4em;
-    }
-  }
-
-  .product-quantity {
-    input {
-      width: 40px;
-    }
-  }
-
-  .remove-product {
-    border: 0;
-    padding: 4px 8px;
-    background-color: #c66;
-    color: #fff;
-    font-family: $font-bold;
-    font-size: 12px;
-    border-radius: 3px;
-    margin: 15px;
-  }
-
-  .remove-product:hover {
-    background-color: #a44;
-  }
-}
-
-/* Totals section */
-.totals {
-  .totals-item {
-    float: right;
-    clear: both;
-    width: 100%;
-    margin-bottom: 10px;
-
-    label {
-      float: left;
-      clear: both;
-      width: 79%;
-      text-align: right;
-    }
-
-    .totals-value {
-      float: right;
-      width: 21%;
-      text-align: right;
-    }
-  }
-
-  .totals-item-total {
-    font-family: $font-bold;
-  }
-}
-
-.checkout {
-  float: right;
-  border: 0;
-  margin-top: 20px;
-  padding: 6px 25px;
-  background-color: #6b6;
-  color: #fff;
-  font-size: 25px;
-  border-radius: 3px;
-}
-
-.checkout:hover {
-  background-color: #494;
-}
-
-// * {
-//   padding: 0;
-//   margin: 0;
-//   width: 100%;
-//   height: 80%;
-// }
-
-// .container {
-//   padding-top: 130px;
-//   width: 100%;
-//   height: 100%;
-// }
-// .parent {
-//   width: 100%;
-//   height: 100%;
-//   display: grid;
-//   flex-wrap: wrap;
-//   grid-gap: 1rem;
-//   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-//   justify-content: center;
-
-// }
-
-// .card {
-//   background-color: rgb(255, 255, 255);
-//   width: 175px;
-//   height: 281px;
-//   box-shadow: 5px 10px 18px #888888;
-//   border-radius: 10px;
-// }
-// .addCart {
-//   height: 30px;
-//   width: 30px;
-//   background-color: orange;
-//   border-radius: 35px;
-//   color: white;
-//   cursor: pointer;
-// }
-
-// img {
-//   width: 155px;
-//   height: 155px;
-//   margin: 0 auto;
-//   display: flex;
-// }
-
-// .info {
-//   display: flex;
-//   flex-direction: column;
-//   height: 50%;
-// }
-// .name {
-//   display: flex;
-//   text-align: center;
-//   margin: 10px;
-//   width: 100%;
-//   height: 20%;
-// }
-
-// .btnGroup {
-//   display: flex;
-//   justify-content: space-between;
-//   text-align: center;
-//   width: 100%;
-//   height: 30%;
-//   .price {
-//       width: 50%;
-//       height: 50%;
-//   }
-
-// }

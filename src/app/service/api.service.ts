@@ -8,6 +8,8 @@ import { Data } from 'src/app/model/data.model';
 export class ApiService {
   private apiUrl = 'http://localhost:3000';
 
+  
+
   constructor() {}
 
   get(): Promise<Data[]> {
@@ -24,5 +26,9 @@ export class ApiService {
 
   delete(id: number) {
     return axios.delete(`${this.apiUrl}/delete/${id}`);
+  }
+
+  updateQuantity(id: number, quantity: number, stock: number) {
+    return axios.put(`${this.apiUrl}/update/${id}`, {quantity, stock});
   }
 }

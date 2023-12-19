@@ -4,32 +4,29 @@ import { ApiService } from '../../service/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { Observable } from 'rxjs';
-
+import { AuthService } from 'src/app/auth/auth.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
   data: Data[] = [];
+  checkData: boolean = false;
+  searchKey: string = "";
 
-  itemList: any = [];
-
-  itemList$: Observable<Data[]> = new Observable();
-
-  constructor(private apiService: ApiService, private dialog: MatDialog) {}
+  constructor(
+    private apiService: ApiService,
+    private dialog: MatDialog,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.get();
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.get();
-      this.dialog.closeAll();
+    this.cartService.search.subscribe((val: any) => {
+      this.searchKey = val;
     });
   }
 
@@ -38,7 +35,7 @@ export class MainComponent implements OnInit {
       data,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.get();
       this.dialog.closeAll();
     });
@@ -53,16 +50,8 @@ export class MainComponent implements OnInit {
     }
   }
 
-  delete(id: number) {
-    this.apiService.delete(id).then((res) => {
-      console.log(res);
-      this.get();
-    });
-  }
-
-  addToCart(piano: any) {
-    this.itemList.push(piano);
-    console.log(this.itemList);
+  addToCart(data: Data) {
+    this.cartService.addtoCart(data);
   }
 
   

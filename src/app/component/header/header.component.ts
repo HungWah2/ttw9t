@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  loginStatus: boolean = false;
+  public searchTerm: string = "";
 
+  constructor(public auth: AuthService, public cartService: CartService) { }
+
+  ngOnInit(): void{
+    
+  }
+
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.cartService.search.next(this.searchTerm);
+  }
 }

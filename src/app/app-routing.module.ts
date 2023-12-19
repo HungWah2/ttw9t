@@ -15,11 +15,20 @@ const routes: Routes = [
     path: "cart",
     loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   },
-  // {
-  //   path: "**",
-  //   redirectTo:"home",
-  //   pathMatch:"full"
-  // }
+  {
+    path: "login",
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: "admin",
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path:"**",
+    redirectTo:"home",
+    pathMatch:"full"
+  }
+
   
 ];
 
