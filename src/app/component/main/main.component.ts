@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
     this.cartService.search.subscribe((val: any) => {
       this.searchKey = val;
     });
+    
   }
 
   openEditDialog(data: any) {

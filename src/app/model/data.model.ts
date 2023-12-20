@@ -1,13 +1,13 @@
 export interface Data {
-    id: any;
+    id: number;
     img: any;
     color: any;
     price: number;
     name: any;
     saleOff: any;
     description: any;
-    quantity: any;
+    quantity: number;
     stock: number;
-    totals: any;
+    totals: number;
     }
     

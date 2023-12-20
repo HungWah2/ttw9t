@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  public products: any[] = [];
+  public products: Data[] = [];
   public grandTotal!: number;
   constructor(private cartService: CartService) {}
 
