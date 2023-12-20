@@ -17,6 +17,8 @@ import { HeaderComponent } from './component/header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { FilterPipe } from './shared/filter.pipe';
+import { FillComponent } from './fill/fill.component';
+import { ChoiceComponent } from './choice/choice.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { FilterPipe } from './shared/filter.pipe';
     HeaderComponent,
     AdminComponent,
     FilterPipe,
+    FillComponent,
+    ChoiceComponent,
   ],
   imports: [
     BrowserModule,

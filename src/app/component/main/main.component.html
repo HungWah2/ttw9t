@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="main">
     <div class="card-group">
       <div class="card" *ngFor="let piano of data | filter:searchKey:'name'">
@@ -32,4 +32,46 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of data | filter : searchKey : 'name'">
+      <div  class="card col-md-3">
+        <img src="{{ item.img }}" alt="" />
+        <h3
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+            font-size: x-large;
+            font-weight: bold;
+          "
+        >
+          {{ item.name }}
+        </h3>
+        <p
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.description }}
+        </p>
+        <p><strong>Price:</strong> ${{ item.price }}</p>
+        <p><strong>Color:</strong> {{ item.color }}</p>
+        <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+        <!-- <p class="price" [class.sale]="item.saleOff"><strong >Sale off:</strong> {{item.saleOff}}</p>
+              <p class="sale-off" *ngIf="item.saleOff"><strong >Sale off:</strong> {{item.saleOff}}</p> -->
+
+        <button class="btn btn-primary" (click)="addToCart(item)">
+          Add to cart
+        </button>
+      </div>
+
+    </ng-container>
+  </div>
+

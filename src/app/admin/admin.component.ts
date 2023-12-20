@@ -4,17 +4,16 @@ import { Observable } from 'rxjs';
 import { Data } from '../model/data.model';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ChoiceComponent } from '../choice/choice.component';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent {
   data: Data[] = [];
-  itemList: any = [];
-
-  itemList$: Observable<Data[]> = new Observable();
+  searchKey: string = '';
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
 
@@ -25,7 +24,7 @@ export class AdminComponent {
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.get();
       this.dialog.closeAll();
     });
@@ -36,7 +35,7 @@ export class AdminComponent {
       data,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.get();
       this.dialog.closeAll();
     });
@@ -52,11 +51,11 @@ export class AdminComponent {
   }
 
   delete(id: number) {
-    this.apiService.delete(id).then((res) => {
-      console.log(res);
+    if(confirm('Are you sure to delete this record?')){
+      this.apiService.delete(id);
       this.get();
-    });
+    } else {
+      this.get();
+    }
   }
-
- 
 }

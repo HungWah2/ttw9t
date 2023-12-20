@@ -1,41 +1,114 @@
-<div class="container">
-  <div class="header">
-    <h1 class="title" [routerLink]="['/home']">Piano Store</h1>
-    <div class="row1">
-      <div class="search">
-        <input
-          class="fnSearch"
-          [(ngModel)]="searchTerm"
-          (keyup)="search($event)"
-          type="text"
-          placeholder="Search"
-        />
-      </div>
-      <div class="btnS">
-        <button class="btnSearch"><mat-icon>search</mat-icon></button>
-      </div>
-    </div>
-    <div class="row2">
-      <div class="introduce">
-        <div [routerLink]="['/home']" class="home" rou>Home</div>
-        <div class="about">About Us</div>
-      </div>
-      <div class="btn-group">
-        <div *ngIf="!auth.session" [routerLink]="['/login']" class="cart">
-          <mat-icon>account_circle</mat-icon>
+<!-- <header>
+  <div class="container">
+    <div class="header">
+      <h1 class="title" [routerLink]="['/home']">Piano Store</h1>
+      <div class="row1">
+        <div class="search">
+          <input
+            class="fnSearch"
+            [(ngModel)]="searchTerm"
+            (keyup)="search($event)"
+            type="text"
+            placeholder="Search"
+          />
         </div>
-        <div (click)="auth.logout()" *ngIf="auth.session" class="cart">
-          <mat-icon>logout</mat-icon>
+        <div class="btnS">
+          <button class="btnSearch"><mat-icon>search</mat-icon></button>
         </div>
-        <div [routerLink]="['/cart']" class="cart">
-          <mat-icon
-          matBadgeColor="warn"
-            matBadgeSize="small"
-            matBadge="{{ this.cartService.cartItemList.length }}"
-            >add_shopping_cart
-          </mat-icon>
+      </div>
+      <div class="row2">
+        <div class="introduce">
+          <div [routerLink]="['/home']" class="home" rou>Home</div>
+          <div class="about">About Us</div>
+        </div>
+        <div class="btn-group">
+          <div *ngIf="!auth.session" [routerLink]="['/login']" class="cart">
+            <mat-icon>account_circle</mat-icon>
+          </div>
+          <div (click)="auth.logout()" *ngIf="auth.session" class="cart">
+            <mat-icon>logout</mat-icon>
+          </div>
+          <div [routerLink]="['/cart']" class="cart">
+            <mat-icon
+              matBadgeColor="warn"
+              matBadgeSize="small"
+              matBadge="{{ this.cartService.cartItemList.length }}"
+              >add_shopping_cart
+            </mat-icon>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</header>
+ -->
+
+<header>
+  <div class="navbar shadow-sm" style="background-color: antiquewhite">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px">
+        <img src="" alt="" />
+      </i>
+      <strong
+        *ngIf="!auth.status"
+        [routerLink]="['/home']"
+        class="home"
+        style="
+          font-size: 25px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          margin-left: 10px;
+        "
+        >Piano Store</strong
+      >
+
+      <strong
+        *ngIf="auth.status"
+        [routerLink]="['/admin']"
+        class="home"
+        style="
+          font-size: 25px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          margin-left: 10px;
+        "
+        >Piano Store</strong
+      >
+      
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchTerm"
+          (keyup)="search($event)"
+          placeholder="search products"
+        />
+      </div>
+      <span class="fas fa-search search-icon"></span>
+      <div class="introduce" style="display: flex; align-items: center; font-size: medium; cursor: pointer;">
+        <div style="margin:0 10px; " [routerLink]="['/home']" class="home" rou>Home</div>
+        <div class="about">About Us</div>
+      </div>
+    </div>
+    <div class="btn-group">
+      <div *ngIf="!auth.session" [routerLink]="['/login']" class="cart">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <div (click)="auth.logout()" *ngIf="auth.session" class="cart">
+        <mat-icon>logout</mat-icon>
+      </div>
+      <div [routerLink]="['/cart']" class="cart">
+        <mat-icon
+          matBadgeColor="warn"
+          matBadgeSize="small"
+          matBadge="{{ this.cartService.cartItemList.length }}"
+          >add_shopping_cart
+        </mat-icon>
+      </div>
+      <!-- <button  (click)="this.cartService.openDialog()" >open</button> -->
+
+    </div>
+  </div>
+</header>
