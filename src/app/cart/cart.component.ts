@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../service/cart.service';
 import { Data } from '../model/data.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart',
@@ -37,7 +38,9 @@ export class CartComponent {
   }
 
   buyProducts() {
-    alert('Thank you for buying our products');
-    this.cartService.removeAllCart();
+    this.cartService.buyProducts();
   }
+
+
+ 
 }

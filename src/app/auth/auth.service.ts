@@ -8,6 +8,7 @@ export class AuthService {
   session: any = null;
   username: string = '';
   password: string = '';
+  status: boolean = false;
   constructor(private router:Router) { }
 
   login(username: string, password: string)
@@ -16,10 +17,13 @@ export class AuthService {
     {
       this.session = {username: 'admin'};
       this.router.navigate(['/admin']);
+      this.status = true;
+      
     } else if(username == 'user' && password == 'user')
     {
       this.session = {username: 'user'};
       this.router.navigate(['/user']);
+      this.status = false;
     } else if(username.length == 0 && password.length == 0)
     {
       alert('Please enter username and password');

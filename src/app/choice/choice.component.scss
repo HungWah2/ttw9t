@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50%;
+    border-radius: 30px;
+}
+
+.btn-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+button {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    margin: 10px;
+}

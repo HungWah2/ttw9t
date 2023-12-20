@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Data } from '../model/data.model';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from './api.service';
+import { AuthService } from '../auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FillComponent } from '../fill/fill.component';
+
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +15,7 @@ export class CartService {
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>('');
   public checkDataa: boolean = false;
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private auth:AuthService, private dialog: MatDialog) {}
   getProducts() {
     return this.productList.asObservable();
   }
@@ -92,6 +96,28 @@ export class CartService {
     this.productList.next(this.cartItemList);
     this.checkDataa = false;
   }
+
+  buyProducts() {
+    if(this.auth.session == null) {
+      alert('Please login to buy products or fill in the form below');
+      this.openDialog();
+      
+
+
+    } else {
+      alert('Thank you for buying our products');
+      this.removeAllCart();
+    }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(FillComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.dialog.closeAll();
+    });
+  }
+
 
   
 }

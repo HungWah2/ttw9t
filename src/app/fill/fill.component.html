@@ -1,0 +1,31 @@
+<div class="container">
+    <form >
+
+      <div class="content">
+        <div>
+          <div>Họ & tên</div>
+          <input type="text" placeholder="Họ & tên" formControlName="img" />
+        </div>
+        <div>
+          <div>Email</div>
+          <input type="text" placeholder="Email" formControlName="color" />
+        </div>
+        <div>
+          <div>SĐT</div>
+          <input type="text" placeholder="SĐT" formControlName="price" />
+        </div>
+        <div>
+          <div>Địa chỉ</div>
+          <input type="text" placeholder="Địa chỉ" formControlName="saleOff" />
+        </div>
+        <div>
+          <div>Ghi chú</div>
+          <input style="width: 300px; ;height: 100px;" type="text" placeholder="Ghi chú" formControlName="name" />
+        </div>
+        </div>
+      <div class="buttons">
+        <button class="btn-danger"  type="submit">Close</button>
+        <button (click)="buyProducts()" class="btn-success"  type="submit">Buy</button>
+      </div>
+    </form>
+  </div>

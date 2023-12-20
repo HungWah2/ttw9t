@@ -1,32 +1,33 @@
-<div class="container">
-  <div id="card">
-    <h1>Login</h1>
-    <form class="form" (submit)="login()">
-      <div class="col-25">
-        <label for="fname">Username</label>
-      </div>
-      <div class="col-75">
-        <input
-          [(ngModel)]="username"
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Your username.."
-        />
-      </div>
-      <div class="col-25">
-        <label for="password">Password</label>
-      </div>
-      <div class="col-75">
-        <input
-          [(ngModel)]="password"
-          type="text"
-          id="password"
-          name="password"
-          placeholder="Your password.."
-        />
-      </div>
-      <button class="btnLogin" type="submit">Login</button>
-    </form>
+
+  <div class="container">
+    <div id="card">
+      <h1>Login</h1>
+      <form class="form" (submit)="login()">
+        <div class="col-25">
+          <label for="fname">Username</label>
+        </div>
+        <div class="col-75">
+          <input
+            [(ngModel)]="username"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Your username.."
+          />
+        </div>
+        <div class="col-25">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-75">
+          <input
+            [(ngModel)]="password"
+            type="text"
+            id="password"
+            name="password"
+            placeholder="Your password.."
+          />
+        </div>
+        <button class="btnLogin" type="submit">Login</button>
+      </form>
+    </div>
   </div>
-</div>
